@@ -24,6 +24,12 @@ public class UsuarioController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("Llegue al controlador NEW GET...");
+		String identificacion = request.getParameter("identificacion");
+		ClienteDAO cd = new ClienteDAO();
+		Cliente cliente = cd.consultar(identificacion);
+		request.setAttribute("parametrocliente", cliente);
+		javax.servlet.RequestDispatcher rd = request.getRequestDispatcher("./Paginas/RespuestaConsultaCliente.jsp");
+        rd.forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
