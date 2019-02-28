@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-    <%@ page import="model.DTOs.Cliente" %>
+	pageEncoding="ISO-8859-1"%>
+<%@ page import="model.DTOs.Venta"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,21 +20,46 @@
 	src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
 	integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
 	crossorigin="anonymous"></script>
-<title>V.A.T.A.S :: Consultar Cliente</title>
+<title>Informacion venta</title>
 </head>
 <body>
-	<h2>Consultar Cliente</h2>
 	<div>
-		<form method="get" action="/concesionarios/UsuarioController">
+		<%
+			Venta venta = (Venta) request.getAttribute("parametroventa");
+		%>
+		<div>
+			Venta Nº:
+			<%=venta.getIdVenta().toString()%>
+		</div>
+		<div>
+			Fecha de venta:
+			<%=venta.getFecha()%>
+		</div>
+		<div>
 			<div>
-				<label for="name">Identificación: </label> <input type="text"
-					name="identificacion" />
+				Cédula:
+				<%=venta.getCliente().getIdentificacion()%></div>
+			<div>
+				Datos Cliente: <span>Nombres <%=venta.getCliente().getNombre1()%></span>
+				<span><%=venta.getCliente().getNombre2()%></span>
 			</div>
 			<div>
-				<input type="submit">
+				Apellidos <span><%=venta.getCliente().getApellido1()%></span> <span><%=venta.getCliente().getApellido2()%></span>
 			</div>
-		</form>
-		
+		</div>
+		<div>
+			Datos Vehiculo <span><%=venta.getAuto().getIdTipo()%></span> 
+			<span>Marca:
+				<%=venta.getAuto().getMarca()%></span>
+			<div>
+				<span>Placas: <%=venta.getAuto().getPlaca()%></span> <span>Placas:
+					<%=venta.getAuto().getValor()%></span>
+			</div>
+		</div>
+		<div>
+			Tipo de persona:
+			<%=venta.getValor()%>
+		</div>
 	</div>
 </body>
 </html>

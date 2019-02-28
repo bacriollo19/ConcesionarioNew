@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-    <%@ page import="model.DTOs.Cliente" %>
+    <%@ page import="model.DTOs.Auto" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,21 +20,25 @@
 	src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
 	integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
 	crossorigin="anonymous"></script>
-<title>V.A.T.A.S :: Consultar Cliente</title>
+<title>Informacion auto</title>
 </head>
 <body>
-	<h2>Consultar Cliente</h2>
 	<div>
-		<form method="get" action="/concesionarios/UsuarioController">
+			<%
+				Auto auto = (Auto) request.getAttribute("parametroauto");
+			%>
 			<div>
-				<label for="name">Identificación: </label> <input type="text"
-					name="identificacion" />
+				Marca: <%=auto.getMarca() %>
 			</div>
 			<div>
-				<input type="submit">
+				Apellidos: <%=auto.getIdTipo() %> 
 			</div>
-		</form>
-		
-	</div>
+			<div>
+				Placa: <%=auto.getPlaca() %>
+			</div>
+			<div>
+				Valor: <%=auto.getValor() %>
+			</div>
+		</div>
 </body>
 </html>

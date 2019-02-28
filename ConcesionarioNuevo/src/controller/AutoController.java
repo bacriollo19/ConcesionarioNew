@@ -22,6 +22,12 @@ public class AutoController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("Llego al GET");
+		String identificacion = request.getParameter("identificacion");
+		AutoDAO autoDao = new AutoDAO();
+		Auto auto = autoDao.consultar(identificacion);
+		request.setAttribute("autoconsulta", auto);
+		javax.servlet.RequestDispatcher rd = request.getRequestDispatcher("./Paginas/RespuestaConsultaAuto.jsp");
+		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

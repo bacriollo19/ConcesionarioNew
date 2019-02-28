@@ -31,6 +31,12 @@ public class VentaController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("Llego al GET");
+		String identificacion = request.getParameter("identificacion");
+		VentaDAO ventaDao = new VentaDAO();
+		Venta venta = ventaDao.consultar(identificacion);
+		request.setAttribute("parametroventa", venta);
+		javax.servlet.RequestDispatcher rd = request.getRequestDispatcher("./Paginas/RespuestaConsultaVenta.jsp");
+        rd.forward(request, response);
 	}
 
 	/**

@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-    <%@ page import="model.DTOs.Cliente" %>
+	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,21 +19,21 @@
 	src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
 	integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
 	crossorigin="anonymous"></script>
-<title>V.A.T.A.S :: Consultar Cliente</title>
+<title>V.A.T.A.S :: Consultar Auto</title>
 </head>
 <body>
-	<h2>Consultar Cliente</h2>
+	<h2>Consultar Auto</h2>
 	<div>
-		<form method="get" action="/concesionarios/UsuarioController">
+		<form method="get" action="/concesionarios/AutoController">
 			<div>
-				<label for="name">Identificación: </label> <input type="text"
+				<label for="name">: Id Auto</label> <input type="text"
 					name="identificacion" />
 			</div>
 			<div>
 				<input type="submit">
 			</div>
 		</form>
-		
+
 	</div>
 </body>
 </html>
