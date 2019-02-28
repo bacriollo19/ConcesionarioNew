@@ -44,6 +44,8 @@
 			<div>
 				<input type="submit" value = "Vender">
 			</div>
+			<a href="./index.html" style="link {color: white"><button
+					class="btn btn-danger">Cancelar</button></a>
 		</form>
 	</div>
 </body>

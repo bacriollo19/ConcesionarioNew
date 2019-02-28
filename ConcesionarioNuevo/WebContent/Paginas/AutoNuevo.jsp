@@ -32,7 +32,7 @@
 			con placa
 			<%=placa%>
 			se agrego correctamente
-		<a href="./index.html"> Volver </a>
+		<a href="../index.html" style=":link {color:white}"><button class="btn btn-info"> Inicio</button></a>
 	</div>
 </body>
 </html>
