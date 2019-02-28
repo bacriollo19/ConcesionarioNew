@@ -50,7 +50,7 @@
 			<div>
 				<input type="submit" value = "Agregar Auto">
 			</div>
-			<a href="../index.html" style=":link {color:white}"><button class="btn btn-danger"> Cancelar</button></a>
+			<a href="./index.html" style=":link {color:white}"><button class="btn btn-danger"> Cancelar</button></a>
 		</form>
 	</div>
 </body>

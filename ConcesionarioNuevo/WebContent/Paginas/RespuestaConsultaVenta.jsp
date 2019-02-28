@@ -61,6 +61,6 @@
 			<%=venta.getValor()%>
 		</div>
 	</div>
-	<a href="../index.html" style=":link {color:white}"><button class="btn btn-info"> Inicio</button></a>
+	<a href="./index.html" style=":link {color:white}"><button class="btn btn-info"> Inicio</button></a>
 </body>
 </html>
