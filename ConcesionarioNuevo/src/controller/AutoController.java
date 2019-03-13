@@ -33,6 +33,7 @@ public class AutoController extends HttpServlet {
 		try {
 			javax.servlet.RequestDispatcher rd = request.getRequestDispatcher("./Paginas/RespuestaConsultaAuto.jsp");
 			rd.forward(request, response);
+			Logger.getLogger(getClass()).log(Level.INFO, "Informacion enviada correctamente a: ./Paginas/RespuestaConsultaAuto.jsp");
 		} catch (ServletException e) {
 			Throwable th = e.getCause();
 			Logger.getLogger(getClass()).log(Level.ERROR, "Servlet Error EXCEPTION STRING: {0}" + e.getMessage());
@@ -68,6 +69,7 @@ public class AutoController extends HttpServlet {
 			try {
 				javax.servlet.RequestDispatcher rd = request.getRequestDispatcher("./Paginas/AutoNuevo.jsp");
 				rd.forward(request, response);
+				Logger.getLogger(getClass()).log(Level.INFO, "Informacion enviada correctamente a: ./Paginas/AutoNuevo.jsp");
 			} catch (ServletException e) {
 				Throwable th = e.getCause();
 				Logger.getLogger(getClass()).log(Level.ERROR, "Servlet Error EXCEPTION STRING: {0}" + e.getMessage());

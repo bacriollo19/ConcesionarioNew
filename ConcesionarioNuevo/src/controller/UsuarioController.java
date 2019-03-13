@@ -27,7 +27,7 @@ public class UsuarioController extends HttpServlet {
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) {
-		System.out.println("Llegue al controlador NEW GET...");
+		Logger.getLogger(getClass()).log(Level.INFO, "Se llego al controlador de consulta GET de USUARIO");
 		String identificacion = request.getParameter("identificacion");
 		ClienteDAO cd = new ClienteDAO();
 		Cliente cliente = cd.consultar(identificacion);
@@ -52,7 +52,7 @@ public class UsuarioController extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println("Llegue al controlador NEW POST...");
+		Logger.getLogger(getClass()).log(Level.INFO, "Se llego al controlador de consulta POST de USUARIO");
 		String fechanacimiento = request.getParameter("fechanacimiento");
 		Cliente cliente = new Cliente();
 		cliente.setIdentificacion(request.getParameter("identificacion"));
@@ -68,7 +68,7 @@ public class UsuarioController extends HttpServlet {
 		Date date;
 		try {
 			date = new SimpleDateFormat("yyyy-MM-dd").parse(fechanacimiento);
-			System.out.println(fechanacimiento + "\t" + date);
+			Logger.getLogger(getClass()).log(Level.INFO, fechanacimiento + "\t" + date);
 			cliente.setFechNac(date);
 		} catch (ParseException e) {
 			Throwable th = e.getCause();
@@ -78,7 +78,6 @@ public class UsuarioController extends HttpServlet {
 			Logger.getLogger(ClienteDAO.class.getName()).log(Level.ERROR,
 					"Error de conversión de fecha THROWABLE MESSAGE: {0}" + th.toString());
 		}
-		System.out.println("HASTA AQUI BIEN");
 		ClienteDAO cdao = new ClienteDAO();
 		if (cdao.insertar(cliente)) {
 			request.setAttribute("parametronombre", cliente.getNombre1());
@@ -86,6 +85,7 @@ public class UsuarioController extends HttpServlet {
 			try {
 				javax.servlet.RequestDispatcher rd = request.getRequestDispatcher("./Paginas/BienvenidoUsuario.jsp");
 				rd.forward(request, response);
+				Logger.getLogger(getClass()).log(Level.INFO, "Informacion enviada correctamente a: ./Paginas/BienvenidoUsuario.jsp");
 			} catch (ServletException e) {
 				Throwable th = e.getCause();
 				Logger.getLogger(getClass()).log(Level.ERROR, "Servlet Error EXCEPTION STRING: {0}" + e.getMessage());
