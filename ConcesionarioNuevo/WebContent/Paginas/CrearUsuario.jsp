@@ -3,152 +3,67 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
-<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
-	crossorigin="anonymous">
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-	integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-	crossorigin="anonymous"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
-	integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-	crossorigin="anonymous"></script>
-<script
-	src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
-	integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-	crossorigin="anonymous"></script>
-</head>
-<body>
+<title>Creative Colorlib SignUp Form</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- Custom Theme files -->
+<link href="../css/style.css" rel="stylesheet" type="text/css" media="all" />
+<!-- //Custom Theme files -->
+<!-- web font -->
+<link href="//fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i" rel="stylesheet">
+<!-- //web font -->
 
-	<div class="container align-content-center">
-		<h2>Formulario</h2>
-		<form method="post" action="/concesionarios/UsuarioController">
-			<div>
-				<div class="input-group flex-nowrap">
-					<div class="input-group-prepend">
-						<span class="input-group-text" id="addon-wrapping">Cédula
-							&#127380;</span>
+<!-- Scripts -->
+<script> 
+function comprobarClave(){ 
+   	clave1 = document.getElementsByName("contrasena")[0].value;
+   	clave2 = document.getElementsByName("contrasena")[1].value;
+
+   	if (clave1 != clave2){
+   		alert("Las dos claves son distintas...\n Por favor ingreselas de nuevo");
+   	   	}	 
+} 
+</script> 
+</head>
+<body background="../images/autos.jpg">
+	<!-- main -->
+	<div class="main-w3layouts wrapper">
+		<h1>Registrarse</h1>
+		<div class="main-agileinfo">
+			<div class="agileits-top">
+				<form method="post" action="/concesionarios/UsuarioController" name = "registroform">
+					<input class="text email" type="text" name="identificacion" placeholder="Número de documento" required="required">
+					<input class="text email" type="text" name="nombre1" placeholder="Primer Nombre" required="required">
+					<input class="text email" type="text" name="nombre2" placeholder="Segundo Nombre" required="required">
+					<input class="text email" type="text" name="apellido1" placeholder="Primer Apellido" required="required">
+					<input class="text email" type="text" name="apellido2" placeholder="Segundo Apellido" required="required">
+					<input class="text email" type="text" name="telefono" placeholder="Teléfono o Celular" required="required">
+					<input class="text email" type="text" name="fechanacimiento" placeholder="Fecha de Nacimiento" required="required">
+					<input class="text email" type="text" name="tipopersona" placeholder="Tipo Persona (Cliente - Admin - Comer)" required="required">
+					<input class="text email" type="text" name="usuario" placeholder="Usuario" required="required">
+					<input class="text email" type="email" name="email" placeholder="Correo" required="required">
+					<input class="text" type="password" name="contrasena" placeholder="Contraseña" required="required">
+					<input class="text w3lpass" type="password" name="contrasena" placeholder="Confirmar contraseña" required="required">
+					<div class="wthree-text">
+						<label class="anim">
+							<input type="checkbox" class="checkbox" required="required">
+							<span>Aceptar terminos y condiciones</span>
+						</label>
+						<div class="clear"> </div>
 					</div>
-					<input type="text" class="form-control" aria-label="identificacion"
-						aria-describedby="addon-wrapping" name="identificacion" />
-				</div>
+					<input type="submit" value="Registrarme" onClick="comprobarClave();">
+					<a href="../index.html" target="_blank">Inicio</a>
+				</form>
 			</div>
-			<div>
-				<div class="input-group flex-nowrap">
-					<div class="input-group-prepend">
-						<span class="input-group-text" id="addon-wrapping">Nombre 1
-							&#128623;</span>
-					</div>
-					<input type="text" class="form-control" aria-label="nombre1"
-						aria-describedby="addon-wrapping" name="nombre1" />
-				</div>
-			</div>
-			<div>
-				<div class="input-group flex-nowrap">
-					<div class="input-group-prepend">
-						<span class="input-group-text" id="addon-wrapping">Nombre 2
-							&#128623;</span>
-					</div>
-					<input type="text" class="form-control" aria-label="nombre2"
-						aria-describedby="addon-wrapping" name="nombre2" />
-				</div>
-			</div>
-			<div>
-				<div class="input-group flex-nowrap">
-					<div class="input-group-prepend">
-						<span class="input-group-text" id="addon-wrapping">Apellido
-							1 &#128623;</span>
-					</div>
-					<input type="text" class="form-control" aria-label="apellido1"
-						aria-describedby="addon-wrapping" name="apellido1" />
-				</div>
-			</div>
-			<div>
-				<div class="input-group flex-nowrap">
-					<div class="input-group-prepend">
-						<span class="input-group-text" id="addon-wrapping">Apellido
-							2 &#128623; </span>
-					</div>
-					<input type="text" class="form-control"
-						aria-label="apellido2 &#128623;" aria-describedby="addon-wrapping"
-						name="apellido2" />
-				</div>
-			</div>
-			<div>
-				<div class="input-group flex-nowrap">
-					<div class="input-group-prepend">
-						<span class="input-group-text" id="addon-wrapping">Telefono
-							&#128222;</span>
-					</div>
-					<input type="text" class="form-control"
-						placeholder="1234567890 &#128241;" aria-label="telefono"
-						aria-describedby="addon-wrapping" name="telefono" />
-				</div>
-			</div>
-			<div>
-				<div class="input-group flex-nowrap">
-					<div class="input-group-prepend">
-						<span class="input-group-text" id="addon-wrapping">Correo</span>
-					</div>
-					<input type="text" class="form-control"
-						placeholder="alguien@ejemplo.com" aria-label="email"
-						aria-describedby="addon-wrapping" name="email" />
-				</div>
-			</div>
-			<div>
-				<div class="input-group flex-nowrap">
-					<div class="input-group-prepend">
-						<span class="input-group-text" id="addon-wrapping">Fecha de
-							Nacimiento &#128197;</span>
-					</div>
-					<input type="text" class="form-control"
-						aria-label="fechanacimiento" placeholder="YYYY-MM-DD &#128198;"
-						aria-describedby="addon-wrapping" name="fechanacimiento" />
-				</div>
-			</div>
-			<div>
-				<div class="input-group flex-nowrap">
-					<div class="input-group-prepend">
-						<span class="input-group-text" id="addon-wrapping">Tipo
-							Persona &#9845;</span>
-					</div>
-					<input type="text" class="form-control" aria-label="Tipo Persona"
-						aria-describedby="addon-wrapping" name="tipopersona" />
-				</div>
-			</div>
-			<div>
-				<div>
-					<div class="input-group flex-nowrap">
-						<div class="input-group-prepend">
-							<span class="input-group-text" id="addon-wrapping">Usuario
-								&#128104;</span>
-						</div>
-						<input type="text" class="form-control" aria-label="Usuario"
-							aria-describedby="addon-wrapping" name="usuario" />
-					</div>
-				</div>
-				<div>
-					<div class="input-group flex-nowrap">
-						<div class="input-group-prepend">
-							<span class="input-group-text" id="addon-wrapping">Contraseña
-								&#128273;</span>
-						</div>
-						<input class="form-control" aria-label="password"
-							aria-describedby="addon-wrapping" type="password"
-							name="contrasena" />
-					</div>
-				</div>
-				<div>
-					<span> <input type="submit" value="Registrarme"
-						class="btn btn-success"> <a href="./index.html"
-						style="link {color: white"><button class="btn btn-danger">
-								Inicio</button></a>
-				</div>
-				<
-			</div>
-		</form>
+		</div>
+		<!-- copyright -->
+		<div class="colorlibcopy-agile">
+			<p>© 2018 Universidad Católica de Colombia. All rights reserved | Design by <a href="https://github.com/Arnold0210" target="_blank">Arnold Herrera</a></p>
+		</div>
+		<!-- //copyright -->
+		
 	</div>
+	<!-- //main -->
 </body>
 </html>
