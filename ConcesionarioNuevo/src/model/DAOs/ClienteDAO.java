@@ -3,20 +3,19 @@ package model.DAOs;
 import java.util.List;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
+
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
 
 import model.DTOs.Cliente;
+import singleton.EManager;
 
 
 public class ClienteDAO {
-	private static final String PERSISTENCE_UNIT_NAME = "concesionarios";
-	private static EntityManagerFactory factory;
-	private EntityManager em;
-
+	private static EntityManager em;
+	static final Logger logger = Logger.getLogger(ClienteDAO.class);
 	public ClienteDAO() {
-		factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
-		em = factory.createEntityManager();
+		em = EManager.getEm();
 	}
 
 	public boolean insertar(Cliente cliente) {
@@ -24,23 +23,29 @@ public class ClienteDAO {
 			em.getTransaction().begin();
 			em.persist(cliente);
 			em.getTransaction().commit();
+			Logger.getLogger(getClass()).log(Level.INFO, "Cliente agregado correctamente");
 		} catch (Exception e) {
 			em.getTransaction().rollback();
-			em.close();
+			Throwable th = e.getCause();
+			Logger.getLogger(getClass()).log(Level.ERROR,"Error when saving 'Cliente' in Database EXCEPTION STRING: {0}"+ e.getMessage());
+			Logger.getLogger(getClass()).log(Level.TRACE,"EXCEPTION STRING: {0}"+e.toString());
+			Logger.getLogger(ClienteDAO.class.getName()).log(Level.ERROR,
+					"Error when saving 'Cliente' in Database  THROWABLE MESSAGE: {0}" + th.toString());
 			return false;
 		}
-		em.close();
 		return true;
 	}
 
 	public Cliente consultar(String id) {
 		Cliente auto = em.find(Cliente.class, id);
+		Logger.getLogger(getClass()).log(Level.INFO, "Se ha consultado el cliente con id: "+ id);
 		return auto;
 	}
 
 	public List<Cliente> selectall() {
-		List<Cliente> ciudades = em.createQuery("SELECT c FROM Auto c ORDER BY c.idAuto", Cliente.class).getResultList();
-		em.close();
+		List<Cliente> ciudades = em.createQuery("SELECT c FROM Auto c ORDER BY c.idAuto", Cliente.class)
+				.getResultList();
+		Logger.getLogger(getClass()).log(Level.INFO, "Se ha consultado toda la lista de clientes");
 		return ciudades;
 	}
 }

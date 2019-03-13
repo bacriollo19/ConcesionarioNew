@@ -1,21 +1,19 @@
 package model.DAOs;
 
 import java.util.List;
-
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
+
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
 
 import model.DTOs.Auto;
+import singleton.EManager;
 
 public class AutoDAO {
-	private static final String PERSISTENCE_UNIT_NAME = "concesionarios";
-	private static EntityManagerFactory factory;
-	private EntityManager em;
-
+	private static EntityManager em;
+	static final Logger logger = Logger.getLogger(AutoDAO.class);
 	public AutoDAO() {
-		factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
-		em = factory.createEntityManager();
+		em = EManager.getEm();
 	}
 
 	public boolean insertar(Auto auto) {
@@ -23,23 +21,28 @@ public class AutoDAO {
 			em.getTransaction().begin();
 			em.persist(auto);
 			em.getTransaction().commit();
+			Logger.getLogger(getClass()).log(Level.INFO, "Auto agregado correctamente");
 		} catch (Exception e) {
 			em.getTransaction().rollback();
-			em.close();
+			Throwable th = e.getCause();
+			Logger.getLogger(getClass()).log(Level.ERROR,"Error when saving 'Auto' in Database EXCEPTION STRING: {0}"+ e.getMessage());
+			Logger.getLogger(getClass()).log(Level.TRACE,"EXCEPTION STRING: {0}"+e.toString());
+			Logger.getLogger(ClienteDAO.class.getName()).log(Level.ERROR,
+					"Error when saving 'Auto' in Database  THROWABLE MESSAGE: {0}" + th.toString());
 			return false;
 		}
-		em.close();
 		return true;
 	}
 
 	public Auto consultar(String id) {
 		Auto auto = em.find(Auto.class, id);
+		Logger.getLogger(getClass()).log(Level.INFO, "Se ha consultado el auto con id: "+ id);
 		return auto;
 	}
 
 	public List<Auto> selectall() {
 		List<Auto> ciudades = em.createQuery("SELECT c FROM Auto c ORDER BY c.idAuto", Auto.class).getResultList();
-		em.close();
+		Logger.getLogger(getClass()).log(Level.INFO, "Se ha consultado toda la lista de autos");
 		return ciudades;
 	}
 }

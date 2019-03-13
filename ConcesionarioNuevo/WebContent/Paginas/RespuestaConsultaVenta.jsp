@@ -29,7 +29,7 @@
 		%>
 		<div>
 			Venta Nº:
-			<%=venta.getIdVenta().toString()%>
+			<%=venta.getIdVenta()%>
 		</div>
 		<div>
 			Fecha de venta:
@@ -52,12 +52,12 @@
 			<span>Marca:
 				<%=venta.getAuto().getMarca()%></span>
 			<div>
-				<span>Placas: <%=venta.getAuto().getPlaca()%></span> <span>Placas:
+				<span>Placas: <%=venta.getAuto().getPlaca()%></span> <span>Valor:
 					<%=venta.getAuto().getValor()%></span>
 			</div>
 		</div>
 		<div>
-			Tipo de persona:
+			Valor Final:
 			<%=venta.getValor()%>
 		</div>
 	</div>

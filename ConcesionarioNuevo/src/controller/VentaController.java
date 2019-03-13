@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
+
 import model.DAOs.AutoDAO;
 import model.DAOs.ClienteDAO;
 import model.DAOs.VentaDAO;
@@ -17,35 +19,39 @@ import model.DTOs.Venta;
 @WebServlet("/VentaController")
 public class VentaController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public VentaController() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+	static final Logger logger = Logger.getLogger(UsuarioController.class);
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public VentaController() {
+		super();
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		System.out.println("Llego al GET");
 		String identificacion = request.getParameter("identificacion");
 		VentaDAO ventaDao = new VentaDAO();
 		Venta venta = ventaDao.consultar(identificacion);
 		request.setAttribute("parametroventa", venta);
 		javax.servlet.RequestDispatcher rd = request.getRequestDispatcher("./Paginas/RespuestaConsultaVenta.jsp");
-        rd.forward(request, response);
+		rd.forward(request, response);
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		System.out.println("Llego al POST");
 		ClienteDAO cd = new ClienteDAO();
-		AutoDAO ad= new AutoDAO();
+		AutoDAO ad = new AutoDAO();
 		VentaDAO vd = new VentaDAO();
 		Venta venta = new Venta();
 		venta.setIdVenta(request.getParameter("idVenta"));
@@ -55,12 +61,12 @@ public class VentaController extends HttpServlet {
 		Date fecha = new Date();
 		venta.setFecha(fecha);
 		System.out.println("HASTA AQUI BIEN");
-		if(vd.insertar(venta)){
+		if (vd.insertar(venta)) {
 			request.setAttribute("parametroauto", venta.getAuto().getNombre());
-	        request.setAttribute("parametronombre", venta.getCliente().getNombre1());
-	        javax.servlet.RequestDispatcher rd = request.getRequestDispatcher("./Paginas/VentaExitosa.jsp");
-	        rd.forward(request, response);
-		}		
+			request.setAttribute("parametronombre", venta.getCliente().getNombre1());
+			javax.servlet.RequestDispatcher rd = request.getRequestDispatcher("./Paginas/VentaExitosa.jsp");
+			rd.forward(request, response);
+		}
 	}
 
 }

@@ -27,6 +27,7 @@
 			<%
 				Auto auto = (Auto) request.getAttribute("parametroauto");
 			%>
+			
 			<div>
 				Marca: <%=auto.getMarca() %>
 			</div>

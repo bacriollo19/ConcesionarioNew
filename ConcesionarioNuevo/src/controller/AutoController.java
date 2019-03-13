@@ -8,30 +8,49 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
+
 import model.DAOs.AutoDAO;
+import model.DAOs.ClienteDAO;
 import model.DTOs.Auto;
 
 @WebServlet("/AutoController")
 public class AutoController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	static final Logger logger = Logger.getLogger(AutoController.class);
 
-    public AutoController() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+	public AutoController() {
+		super();
+	}
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("Llego al GET");
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) {
+		Logger.getLogger(getClass()).log(Level.INFO, "Se llego al controlador de consulta GET de Auto");
 		String identificacion = request.getParameter("identificacion");
 		AutoDAO autoDao = new AutoDAO();
 		Auto auto = autoDao.consultar(identificacion);
-		request.setAttribute("autoconsulta", auto);
-		javax.servlet.RequestDispatcher rd = request.getRequestDispatcher("./Paginas/RespuestaConsultaAuto.jsp");
-		
+		request.setAttribute("parametroauto", auto);
+		try {
+			javax.servlet.RequestDispatcher rd = request.getRequestDispatcher("./Paginas/RespuestaConsultaAuto.jsp");
+			rd.forward(request, response);
+		} catch (ServletException e) {
+			Throwable th = e.getCause();
+			Logger.getLogger(getClass()).log(Level.ERROR, "Servlet Error EXCEPTION STRING: {0}" + e.getMessage());
+			Logger.getLogger(getClass()).log(Level.TRACE, "EXCEPTION STRING: {0}" + e.toString());
+			Logger.getLogger(ClienteDAO.class.getName()).log(Level.ERROR,
+					"Servlet Error  THROWABLE MESSAGE: {0}" + th.toString());
+		} catch (IOException io) {
+			Throwable th = io.getCause();
+			Logger.getLogger(getClass()).log(Level.ERROR, "IO Error EXCEPTION STRING: {0}" + io.getMessage());
+			Logger.getLogger(getClass()).log(Level.TRACE, "EXCEPTION STRING: {0}" + io.toString());
+			Logger.getLogger(ClienteDAO.class.getName()).log(Level.ERROR,
+					"IO Error  THROWABLE MESSAGE: {0}" + th.toString());
+		}
+
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("Llego al POST");
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) {
+		Logger.getLogger(getClass()).log(Level.INFO, "Se llego al controlador de POST de Auto");
 		Auto auto = new Auto();
 		auto.setIdAuto(request.getParameter("identificacion"));
 		auto.setMarca(request.getParameter("marca"));
@@ -42,12 +61,27 @@ public class AutoController extends HttpServlet {
 		auto.setValor(request.getParameter("valor"));
 		System.out.println("HASTA AQUI BIEN");
 		AutoDAO adao = new AutoDAO();
-		if(adao.insertar(auto)){
+		if (adao.insertar(auto)) {
 			request.setAttribute("parametroauto", auto.getNombre());
-	        request.setAttribute("parametroplaca", auto.getPlaca());
-	        javax.servlet.RequestDispatcher rd = request.getRequestDispatcher("./Paginas/AutoNuevo.jsp");
-	        rd.forward(request, response);
-		}	
+			request.setAttribute("parametroplaca", auto.getPlaca());
+
+			try {
+				javax.servlet.RequestDispatcher rd = request.getRequestDispatcher("./Paginas/AutoNuevo.jsp");
+				rd.forward(request, response);
+			} catch (ServletException e) {
+				Throwable th = e.getCause();
+				Logger.getLogger(getClass()).log(Level.ERROR, "Servlet Error EXCEPTION STRING: {0}" + e.getMessage());
+				Logger.getLogger(getClass()).log(Level.TRACE, "EXCEPTION STRING: {0}" + e.toString());
+				Logger.getLogger(ClienteDAO.class.getName()).log(Level.ERROR,
+						"Servlet Error  THROWABLE MESSAGE: {0}" + th.toString());
+			} catch (IOException io) {
+				Throwable th = io.getCause();
+				Logger.getLogger(getClass()).log(Level.ERROR, "IO Error EXCEPTION STRING: {0}" + io.getMessage());
+				Logger.getLogger(getClass()).log(Level.TRACE, "EXCEPTION STRING: {0}" + io.toString());
+				Logger.getLogger(ClienteDAO.class.getName()).log(Level.ERROR,
+						"IO Error  THROWABLE MESSAGE: {0}" + th.toString());
+			}
+		}
 	}
 
 }

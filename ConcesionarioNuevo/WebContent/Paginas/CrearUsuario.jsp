@@ -62,7 +62,7 @@
 							1 &#128623;</span>
 					</div>
 					<input type="text" class="form-control" aria-label="apellido1"
-						aria-describedby="addon-wrapping" name="apellido1 " />
+						aria-describedby="addon-wrapping" name="apellido1" />
 				</div>
 			</div>
 			<div>
@@ -142,8 +142,9 @@
 				</div>
 				<div>
 					<span> <input type="submit" value="Registrarme"
-						class="btn btn-success">
-					<a href="./index.html" style=":link {color:white}"><button class="btn btn-danger"> Inicio</button></a>
+						class="btn btn-success"> <a href="./index.html"
+						style="link {color: white"><button class="btn btn-danger">
+								Inicio</button></a>
 				</div>
 				<
 			</div>
