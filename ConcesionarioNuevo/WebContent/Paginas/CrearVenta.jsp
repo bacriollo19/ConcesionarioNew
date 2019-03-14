@@ -1,52 +1,57 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
-<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
-	crossorigin="anonymous">
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-	integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-	crossorigin="anonymous"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
-	integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-	crossorigin="anonymous"></script>
-<script
-	src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
-	integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-	crossorigin="anonymous"></script>
 <title>Venta de autos</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="application/x-javascript">	
+	 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
+</script>
+<!-- Custom Theme files -->
+<link href="../css/style.css" rel="stylesheet" type="text/css"
+	media="all" />
+<!-- //Custom Theme files -->
+<!-- web font -->
+<link
+	href="//fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i"
+	rel="stylesheet">
+<!-- //web font -->
+
+<!-- Scripts -->
 </head>
-<body>
-	<h2>Venta</h2>
-	<div>
-		<form method="post" action="/concesionarios/VentaController">
-			<div>
-				<label for="name">Identificación Venta</label>
-				<input type="text" name="idVenta"/>
+<body background="../images/venta.jpg">
+	<!-- main -->
+	<div class="main-w3layouts wrapper">
+		<h1 style="color: black">Venta de autos</h1>
+		<div class="main-agileinfo">
+			<div class="agileits-top">
+				<form method="post" action="/concesionarios/VentaController">
+					<input class="text email" type="text" name="idVenta"
+						placeholder="Identificación de la venta" required="required">
+					<input class="text email" type="text" name="idAuto"
+						placeholder="Identificacion del auto" required="required">
+					<input class="text email" type="text" name="idCliente"
+						placeholder="Documento del Cliente" required="required"> <input
+						class="text email" type="text" name="valor"
+						placeholder="Valor de venta" required="required">
+					<div>
+						<input type="submit" value="Vender">
+					</div>
+					<a href="../index.html" target="_blank">Inicio</a>
+				</form>
 			</div>
-			<div>
-				<label for="name">Identificación auto</label>
-				<input type="text" name="idAuto"/>
-			</div>
-			<div>
-				<label for="name">Identficación cliente</label>
-				<input type="text" name="idCliente"/>
-			</div>
-			<div>
-				<label for="name">Valor final venta</label>
-				<input type="text" name="valor"/>
-			</div>
-			<div>
-				<input type="submit" value = "Vender">
-			</div>
-			<a href="./index.html" style="link {color: white"><button
-					class="btn btn-danger">Cancelar</button></a>
-		</form>
+		</div>
+		<!-- copyright -->
+		<div class="colorlibcopy-agile">
+			<p>
+				© 2018 Universidad Católica de Colombia. All rights reserved |
+				Design by <a href="https://github.com/Arnold0210" target="_blank">Arnold
+					Herrera</a>
+			</p>
+		</div>
+		<!-- //copyright -->
 	</div>
 </body>
 </html>
