@@ -5,9 +5,9 @@
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
 	<persistence-unit name="concesionarios"
 		transaction-type="RESOURCE_LOCAL">
-		<class>model.DTOs.Auto</class>
-		<class>model.DTOs.Cliente</class>
-		<class>model.DTOs.Venta</class>
+		<class>org.taller.model.DTOs.Auto</class>
+		<class>org.taller.model.DTOs.Cliente</class>
+		<class>org.taller.model.DTOs.Venta</class>
 		<properties>
 			<property name="javax.persistence.jdbc.url"
 				value="jdbc:postgresql://ec2-23-21-128-35.compute-1.amazonaws.com:5432/db2re13qdp091g?sslmode=require&amp;amp;user=bqaabxrlrryhmb&amp;amp;password=6c339ae3f8adf14920a5ed2c140c59b7ec417c511808acebb24828d9cd84ba9b" />

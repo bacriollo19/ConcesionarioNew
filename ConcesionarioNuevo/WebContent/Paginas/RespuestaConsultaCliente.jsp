@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-    <%@ page import="model.DTOs.Cliente" %>
+    <%@ page import="org.taller.model.DTOs.Cliente" %>
 <!DOCTYPE html>
 <html>
 <head>
